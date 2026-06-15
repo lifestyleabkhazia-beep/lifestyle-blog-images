@@ -340,6 +340,16 @@ table {
   color: var(--green-dark);
 }
 
+.btn--small {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-card .btn + .btn {
+  margin-top: var(--space-2);
+}
+
 .btn--white {
   background: var(--cream);
   color: var(--green-dark);
