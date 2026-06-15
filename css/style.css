@@ -1089,6 +1089,19 @@ table {
   .btn--cta-header {
     display: none;
   }
+
+  .header-inner {
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+  }
+
+  .logo img {
+    height: 38px !important;
+  }
+
+  .logo__text {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
