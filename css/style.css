@@ -102,6 +102,7 @@ body {
   font-size: var(--text-base);
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow-x: hidden;
 }
 
 img, picture, video, canvas, svg {
@@ -1108,6 +1109,15 @@ table {
   .site-nav .btn--primary {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+  }
+
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .article-content,
+  .article-body {
+    padding-inline: 0;
   }
 }
 
