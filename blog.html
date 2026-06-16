@@ -1,0 +1,572 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Mulish:wght@400;600;700&display=swap');
+  .lsb{font-family:'Mulish',sans-serif;background:#F5F2EA;padding:0 0 80px}
+  .lsb__logo{display:flex;align-items:center;gap:14px;padding:32px 40px 0;max-width:1140px;margin:0 auto}
+  .lsb__logo img{height:52px;width:auto}
+  .lsb__logo-text{display:flex;flex-direction:column}
+  .lsb__logo-name{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#2C4A2E;line-height:1}
+  .lsb__logo-sub{font-size:12px;color:#8a9b84;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+  .lsb__hero{position:relative;width:100%;height:420px;overflow:hidden;display:flex;align-items:flex-end;margin-top:24px}
+  @media(max-width:768px){.lsb__hero{height:280px}}
+  .lsb__hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+  .lsb__hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,35,20,0.05) 0%,rgba(20,35,20,0.72) 100%);z-index:1}
+  .lsb__hero-content{position:relative;z-index:2;padding:0 56px 44px;width:100%}
+  @media(max-width:600px){.lsb__hero-content{padding:0 20px 28px}}
+  .lsb__hero-label{display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:16px}
+  .lsb__hero-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4.5vw,52px);color:#fff;font-weight:700;margin:0 0 10px;line-height:1.1}
+  .lsb__hero-sub{font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,0.88);margin:0}
+  .lsb__hero-count{position:absolute;top:24px;right:40px;z-index:2;background:#2C4A2E;color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:24px}
+  .lsb__inner{max-width:1140px;margin:0 auto;padding:0 24px}
+  .lsb__intro{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:44px 0 32px;flex-wrap:wrap}
+  .lsb__intro-tag{display:inline-block;background:#2C4A2E;color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:16px;margin-bottom:10px}
+  .lsb__intro-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,3vw,32px);color:#2C4A2E;font-weight:700;margin:0 0 6px}
+  .lsb__intro-sub{font-size:15px;color:#6b7c65;margin:0}
+  .lsb__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:40px}
+  @media(max-width:900px){.lsb__grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.lsb__grid{grid-template-columns:1fr}}
+  .lsb__card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 18px rgba(44,74,46,.07);text-decoration:none!important;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .lsb__card:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(44,74,46,.15)}
+  .lsb__card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .4s}
+  .lsb__card:hover img{transform:scale(1.06)}
+  .lsb__card-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+  .lsb__badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px;margin-bottom:10px}
+  .b-spa{background:#EDE8F5;color:#4A1E70}
+  .b-pogoda{background:#E3EEF5;color:#1E4060}
+  .b-prak{background:#E8F0E9;color:#2C4A2E}
+  .b-sight{background:#E8F5F0;color:#1A5040}
+  .b-fam{background:#FFF3E8;color:#7A3A10}
+  .b-eco{background:#E8F0E4;color:#2A4A1E}
+  .lsb__card-title{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:600;color:#1a2e1b;line-height:1.45;margin:0 0 12px;flex:1}
+  .lsb__card-link{font-size:12px;font-weight:700;color:#2C4A2E}
+  .lsb__cta{text-align:center;padding-top:8px}
+  .lsb__cta-btn{display:inline-block;background:#2C4A2E;color:#fff!important;font-size:15px;font-weight:700;padding:15px 44px;border-radius:40px;text-decoration:none!important}
+  .lsb__cta-sub{display:block;margin-top:14px;font-size:13px;color:#8a9b84}
+
+  /* Стили для новых карточек lsb-card */
+  .lsb-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 18px rgba(44,74,46,.07);text-decoration:none!important;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .lsb-card:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(44,74,46,.15)}
+  .lsb-card a{text-decoration:none!important;display:flex;flex-direction:column;flex:1}
+  .lsb-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .4s}
+  .lsb-card:hover img{transform:scale(1.06)}
+  .lsb-card__body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+  .lsb-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px;margin-bottom:10px;background:#EDE8F5;color:#4A1E70}
+  .lsb-card__body h3{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:600;color:#1a2e1b;line-height:1.45;margin:0 0 8px;flex:1}
+  .lsb-card__body p{font-size:13px;color:#6b7c65;margin:0 0 10px;line-height:1.5}
+  .lsb-read-more{font-size:12px;font-weight:700;color:#2C4A2E;margin-top:auto}
+</style>
+
+<section class="lsb">
+  <div class="lsb__logo">
+    <img src="https://static.tildacdn.com/tild3765-6234-4834-b235-366365393735/pnglogo1.png" alt="LIFESTYLE эко-отель Абхазия">
+    <div class="lsb__logo-text">
+      <span class="lsb__logo-name">LIFESTYLE</span>
+      <span class="lsb__logo-sub">Журнал об Абхазии</span>
+    </div>
+  </div>
+
+  <div class="lsb__hero">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/hero-banner-wide.webp" alt="Эко-отель LIFESTYLE — закат у моря, Абхазия">
+    <div class="lsb__hero-overlay"></div>
+    <div class="lsb__hero-count">14 статей об Абхазии</div>
+    <div class="lsb__hero-content">
+      <div class="lsb__hero-label">Журнал LIFESTYLE</div>
+      <h1 class="lsb__hero-title">Живые истории<br>об Абхазии</h1>
+      <p class="lsb__hero-sub">Пишем только о том, что знаем сами — живём здесь круглый год</p>
+    </div>
+  </div>
+
+  <div class="lsb__inner">
+    <div class="lsb__intro">
+      <div>
+        <div class="lsb__intro-tag">Свежие статьи</div>
+        <h2 class="lsb__intro-title">Читайте перед поездкой</h2>
+        <p class="lsb__intro-sub">Маршруты, погода, кухня, СПА и честные советы</p>
+      </div>
+    </div>
+    <div class="lsb__grid">
+
+      <!-- Карточка: Живой пар -->
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-retreats.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-retreats.webp" alt="Ретриты и туры в LIFESTYLE" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Ретриты и события</span>
+      <h3>Место, где группа становится командой: ретриты и туры в LIFESTYLE</h3>
+      <p>Йога-тур из Перми и Сочи, большой слёт массажистов в июне — как мы принимаем группы и что делает LIFESTYLE идеальным местом для ретритов.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sap.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-sap.webp" alt="Сапы в Абхазии" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Активный отдых</span>
+      <h3>Встать на доску и уйти в море: сапы прямо с нашего пляжа</h3>
+      <p>Утром море в Алахадзах как зеркало. Берёшь доску, весло — и уходишь в открытое море. Без записи, без трансфера, прямо с территории отеля.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-delfiny.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-sap2.webp" alt="Дельфины у берегов Абхазии" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Абхазия и природа</span>
+      <h3>«Просто отдыхай»: как встречают дельфины у Алахадзов</h3>
+      <p>Дельфины в Абхазии — не аттракцион. Они просто живут здесь. И иногда приходят к людям сами — рано утром, когда море ещё тихое.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-zozh.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-zozh.webp" alt="Активный отдых и йога в LIFESTYLE" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Активный отдых</span>
+      <h3>Отдыхать — значит двигаться: как устроена жизнь в LIFESTYLE</h3>
+      <p>Утренняя йога, волейбол на пляже, тренажёры у моря, сапы и велосипеды — всё бесплатно для гостей. Потому что настоящий отдых — это когда тело оживает.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ryba.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-ryba.webp" alt="Свежая рыба утреннего улова" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Кухня</span>
+      <h3>Рыба, которая вчера ещё плавала — свежий улов на кухне отеля</h3>
+      <p>Барабулька, камбала, лобан и ставрида — рыбаки привозят улов прямо на территорию. Как мы готовим и почему это не похоже ни на один ресторан.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-banya.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-banya.webp" alt="Баня на дровах с видом на море" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3>Баня на дровах с видом на море — другой ритм, другой жар</h3>
+      <p>Чем баня на дровах у моря отличается от городской. Как пахнет дым, как открывается вид, и почему контраст жар-холод работает именно здесь.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-zhivoy-par.html" target="_blank">
+    <div class="lsb-card__img" style="background-image:url('https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa-zhivoy-par.webp')"></div>
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3 class="lsb-card__title">Живой пар: почему это не обычная баня</h3>
+      <p class="lsb-card__desc">Запатентованная технология с ионизацией воздуха. 40°C вместо 80 — и тело восстанавливается глубже, чем в финской сауне.</p>
+      <span class="lsb-read">Читать →</span>
+    </div>
+  </a>
+</div>
+
+<!-- Карточка: Синусоида -->
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-sinusoida.html" target="_blank">
+    <div class="lsb-card__img" style="background-image:url('https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa-sinusoida.webp')"></div>
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3 class="lsb-card__title">Синусоида: что это такое и зачем она нужна вашей спине</h3>
+      <p class="lsb-card__desc">Уникальный тренажёр для позвоночника. Лежишь — тело движется волной. Остеохондроз, сколиоз, усталость после дороги — всё это сюда.</p>
+      <span class="lsb-read">Читать →</span>
+    </div>
+  </a>
+</div>
+
+<!-- Карточка: Массаж -->
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-massazh.html" target="_blank">
+    <div class="lsb-card__img" style="background-image:url('https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa-massazh.webp')"></div>
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3 class="lsb-card__title">Массаж у моря: когда тело наконец-то отдыхает</h3>
+      <p class="lsb-card__desc">Классика, антицеллюлитный, водорослевое обёртывание. Почему массаж в Абхазии работает иначе — и как сочетать с Живым паром.</p>
+      <span class="lsb-read">Читать →</span>
+    </div>
+  </a>
+</div>
+
+<!-- Карточка: Детокс -->
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-detoks.html" target="_blank">
+    <div class="lsb-card__img" style="background-image:url('https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa-detoks.webp')"></div>
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3 class="lsb-card__title">Детокс у моря: 3, 7 или 14 дней — что выбрать</h3>
+      <p class="lsb-card__desc">Программы голодания с сопровождением. Живой пар, йога, медитации — и море за окном. Честно о том, что происходит с телом.</p>
+      <span class="lsb-read">Читать →</span>
+    </div>
+  </a>
+</div>
+<a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa.webp" alt="СПА Живой пар Абхазия">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-spa">СПА и уникальность</span>
+          <div class="lsb__card-title">СПА у моря: Живой пар, Синусоида и настоящее восстановление</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-barkhat.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-barkhat.webp" alt="Бархатный сезон Гагра осень">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-pogoda">Погода</span>
+          <div class="lsb__card-title">Бархатный сезон в Гаграх: почему сентябрь и октябрь — лучшее время</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-dobratsya.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-dobratsya.webp" alt="Как добраться до Гагры граница Абхазия">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-prak">Практика</span>
+          <div class="lsb__card-title">Как добраться до Гагры из Москвы в 2026 году: все варианты</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ritsa.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-ritsa.webp" alt="Озеро Рица ЮНЕСКО горы">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-sight">Достопримечательности</span>
+          <div class="lsb__card-title">Озеро Рица: объект ЮНЕСКО и главное чудо Абхазии</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-svidetelstvo.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-svidetelstvo.webp" alt="В Абхазию по свидетельству о рождении 2026">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-prak">Практика</span>
+          <div class="lsb__card-title">В Абхазию по свидетельству о рождении: что изменилось в 2026</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-deti.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-deti.webp" alt="Гагра с детьми пляж море">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-fam">Семья</span>
+          <div class="lsb__card-title">Гагра с детьми: честный гид от родителей, которые живут здесь</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-glemping.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-glemping.webp" alt="Глэмпинг Абхазия эко-отдых природа">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-eco">Эко-отдых</span>
+          <div class="lsb__card-title">Глэмпинг в Абхазии: жить на природе с комфортом</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-eda.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-eda.webp" alt="Абхазская кухня блюда что попробовать">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-eco">Еда</span>
+          <div class="lsb__card-title">Абхазская кухня: 10 блюд, которые нужно попробовать</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-afon.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-afon.webp" alt="Новый Афон монастырь пещера">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-sight">Достопримечательности</span>
+          <div class="lsb__card-title">Новый Афон: монастырь, пещера и городок у моря</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-kangen.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-kangen.webp" alt="Кангеновая вода польза здоровье">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-spa">СПА и уникальность</span>
+          <div class="lsb__card-title">Kangen-вода: почему мы выбрали именно её для гостей</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rotavirus.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-rotavirus.webp" alt="Ротовирус профилактика отдых с детьми">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-spa">СПА и уникальность</span>
+          <div class="lsb__card-title">Ротовирус на отдыхе: как защитить детей и что делать</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-pogoda.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-pogoda.webp" alt="Погода в Абхазии по месяцам">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-pogoda">Погода</span>
+          <div class="lsb__card-title">Погода в Абхазии по месяцам: когда лучше ехать</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sochi.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-sochi.webp" alt="Абхазия или Сочи сравнение">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-prak">Сравнения</span>
+          <div class="lsb__card-title">Абхазия или Сочи: где лучше отдохнуть с семьёй</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+      <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-turtsiya.html" target="_blank" class="lsb__card">
+        <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-sochi.webp" alt="Абхазия или Турция сравнение">
+        <div class="lsb__card-body">
+          <span class="lsb__badge b-prak">Сравнения</span>
+          <div class="lsb__card-title">Абхазия или Турция: честное сравнение для семейного отдыха</div>
+          <span class="lsb__card-link">Читать →</span>
+        </div>
+      </a>
+
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-goluboye-ozero.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-goluboye-ozero.webp" alt="Голубое озеро в Абхазии" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Достопримечательности</span>
+      <h3>Голубое озеро в Абхазии: как добраться и не пожалеть</h3>
+      <p>Бирюзовая вода, которая выглядит как на фото — чернила и сероводород, маршрут из Алахадзы, как совместить с Рицей.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-chto-vzyat.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-chto-vzyat.webp" alt="Что взять в Абхазию" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Практические советы</span>
+      <h3>Что взять в Абхазию: чек-лист, который избавит от лишних покупок</h3>
+      <p>Документы, деньги, одежда, аптечка — что реально нужно, а что легко купить на месте.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-pitsunda-vs-gagra.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-pitsunda-vs-gagra.webp" alt="Пицунда или Гагра" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Практические советы</span>
+      <h3>Пицунда или Гагра: честное сравнение для тех, кто едет впервые</h3>
+      <p>Пляжи, инфраструктура, маршруты, цены — без рекламных клише.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-gagra-krepost.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-gagra-krepost.webp" alt="Гагрская крепость" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Достопримечательности</span>
+      <h3>Гагрская крепость (Абаата): история и как добраться</h3>
+      <p>Полторы тысячи лет истории, павлины в парке, принц Ольденбургский и 5 минут от Алахадзы.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sezon-2027.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-sezon-2027.webp" alt="Сезон в Абхазии 2027" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Погода и сезоны</span>
+      <h3>Когда открывается сезон в Абхазии 2027: лучшие месяцы</h3>
+      <p>По месяцам: май–октябрь, температуры, советы для семей и таблица «выбери свой месяц».</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-marshrut-3-dnya.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-marshrut-3-dnya.webp" alt="Маршрут 3 дня" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Маршруты</span>
+      <h3>Маршрут на 3 дня по Абхазии: Гагра, Рица, Новый Афон</h3>
+      <p>Куда ехать и в какой последовательности, если у вас только 3 дня.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-med-i-rynki.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-med-i-rynki.webp" alt="Абхазский мёд и рынки" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Еда и кухня</span>
+      <h3>Абхазский мёд и рынки: где покупать и на что обращать внимание</h3>
+      <p>Майский, цветочный, каштановый: как различить настоящее и что привезти из Абхазии.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-malaya-ritsa.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-malaya-ritsa.webp" alt="Малая Рица" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Достопримечательности</span>
+      <h3>Малая Рица — озеро без туристов рядом с Большой Рицей</h3>
+      <p>Изумрудная вода, тишина и 2 км от знаменитого соседа.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-s-sobakoj.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-s-sobakoj.webp" alt="Абхазия с собакой" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Практические советы</span>
+      <h3>Абхазия с собакой — можно ли и как это организовать</h3>
+      <p>Документы, ветклиники, пляж, питание и отели, принимающие питомцев.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-marshrut-7-dnej.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-marshrut-7-dnej.webp" alt="Маршрут 7 дней" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Маршруты</span>
+      <h3>Маршрут на 7 дней: Гагра, Пицунда, Новый Афон, Рица</h3>
+      <p>Полный гид с картой для тех, кто хочет увидеть максимум за одну поездку.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rannee-bronirovanie.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-rannee-bronirovanie.webp" alt="Раннее бронирование" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Практические советы</span>
+      <h3>Раннее бронирование: когда бронировать и сколько сэкономить</h3>
+      <p>Честный гид по датам, скидкам и общим правилам бронирования отдыха в Абхазии.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rybalka-abkhaziya.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-rybalka-abkhaziya.webp" alt="Рыбалка в Абхазии" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Эко-отдых</span>
+      <h3>Рыбалка в Абхазии — где рыбачить, что ловят и как организовать</h3>
+      <p>Морская и речная, камбала и форель, правила въезда и лучшие места.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-tkuarchal.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-tkuarchal.webp" alt="Ткуарчал" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Достопримечательности</span>
+      <h3>Ткуарчал — нетуристическая Абхазия</h3>
+      <p>Советский город-призрак: руины, лес, река, атмосфера, которая запоминается.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-vina-abkhazii.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-vina-abkhazii.webp" alt="Абхазские вина" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Еда и кухня</span>
+      <h3>Абхазские вина: какие попробовать и где купить</h3>
+      <p>Апсны, Лыхны, Псоу, Амра — путеводитель по абхазскому виноделию.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-tim-bem.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-tim-bem.webp" alt="ТИМ и БЭМ" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3>ТИМ и БЭМ в LIFESTYLE: как работают эти аппараты</h3>
+      <p>Инфракрасный прогрев и биоэлектромагнитная терапия — что это даёт на практике.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-velosiped-i-marshruti.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-velosiped-i-marshruti.webp" alt="Горный велосипед" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">Маршруты</span>
+      <h3>Горный велосипед и пешие маршруты в Абхазии</h3>
+      <p>Где ехать и ходить, какой уровень подготовки нужен.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-yoga-u-morya.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-yoga-u-morya.webp" alt="Йога у моря" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3>Йога у моря в LIFESTYLE: утренние практики и ретриты</h3>
+      <p>Ежедневная йога в 7:00, хатха + пранаяма, групповые ретриты — всё включено для гостей.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-detoks-u-morya.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-detoks-u-morya.webp" alt="Детокс у моря" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3>Детокс у моря: программа очищения без голодания</h3>
+      <p>Kangen-вода, ТИМ-капсула, Живой пар, питание — программы на 3, 5 и 7 дней.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+<div class="lsb-card">
+  <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-massazhi-lifestyle.html">
+    <img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/images/art-article-massazhi-lifestyle.webp" alt="Массажи LIFESTYLE" loading="lazy">
+    <div class="lsb-card__body">
+      <span class="lsb-tag">СПА и уникальность</span>
+      <h3>Массажи в LIFESTYLE — полный гид по видам, ценам и записи</h3>
+      <p>БЭМ, классический, расслабляющий, антицеллюлитный — от 2 000 ₽.</p>
+      <span class="lsb-read-more">Читать в журнале →</span>
+    </div>
+  </a>
+</div>
+
+    </div>
+    <div class="lsb__cta">
+      <a href="https://lifestylehotel.online/?znms_widget_open=8057" class="lsb__cta-btn">Забронировать эко-бунгало →</a>
+      <span class="lsb__cta-sub">Первая линия моря · СПА · Тишина · Абхазия</span>
+    </div>
+  </div>
+</section>
