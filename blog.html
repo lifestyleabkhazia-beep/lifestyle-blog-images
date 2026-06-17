@@ -20,6 +20,12 @@
 .lsc-b p{font-size:12px;color:#6b7c65;margin:0 0 8px;line-height:1.5}
 .lsc-r{font-size:12px;font-weight:700;color:#2C4A2E;margin-top:auto}
 .lsb-cta{text-align:center;margin-top:36px}
+
+/* Filters */
+.lsb-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;justify-content:center}
+.lsb-filter{background:#fff;border:2px solid #e0ddd5;color:#2C4A2E;font-size:13px;font-weight:600;padding:7px 18px;border-radius:30px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.lsb-filter:hover,.lsb-filter.active{background:#2C4A2E;color:#fff;border-color:#2C4A2E}
+
 .lsb-cta a{display:inline-block;background:#2C4A2E;color:#fff;font-size:15px;font-weight:700;padding:15px 44px;border-radius:40px;text-decoration:none}
 </style>
 <div class="lsb-wrap">
@@ -32,6 +38,15 @@
     <a href="https://lifestylehotel.online/blog">Журнал</a>
     <a href="https://lifestylehotel.online/?znms_widget_open=8057">Забронировать</a>
   </nav>
+  <div class="lsb-filters">
+    <button class="lsb-filter active" data-cat="all">Все статьи</button>
+    <button class="lsb-filter" data-cat="spa">СПА и отдых</button>
+    <button class="lsb-filter" data-cat="marshrut">Маршруты</button>
+    <button class="lsb-filter" data-cat="eda">Еда и кухня</button>
+    <button class="lsb-filter" data-cat="dostop">Достопримечательности</button>
+    <button class="lsb-filter" data-cat="praktika">Практические советы</button>
+    <button class="lsb-filter" data-cat="pogoda">Погода и сезоны</button>
+  </div>
   <div class="lsb-grid">
 <div class="lsc"><a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa.html"><img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-spa.webp" alt="СПА Живой пар Абхазия" loading="lazy"><div class="lsc-b"><span class="lsc-t">СПА и уникальность</span><h3>СПА у моря: Живой пар, Синусоида и настоящее восстановление</h3><span class="lsc-r">Читать →</span></div></a></div>
 <div class="lsc"><a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-barkhat.html"><img src="https://raw.githubusercontent.com/lifestyleabkhazia-beep/lifestyle-blog-images/main/art-barkhat.webp" alt="Бархатный сезон Гагра осень" loading="lazy"><div class="lsc-b"><span class="lsc-t">Погода</span><h3>Бархатный сезон в Гаграх: почему сентябрь и октябрь — лучшее время</h3><span class="lsc-r">Читать →</span></div></a></div>
@@ -110,3 +125,29 @@
     <a href="https://lifestylehotel.online/?znms_widget_open=8057">Забронировать отдых</a>
   </div>
 </div>
+<script>
+(function(){
+  var cats = {
+    'spa': ['СПА и уникальность','Ретриты и события','Эко-отдых','Активный отдых'],
+    'marshrut': ['Маршруты'],
+    'eda': ['Еда и кухня','Еда','Кухня'],
+    'dostop': ['Достопримечательности','Абхазия и природа'],
+    'praktika': ['Практические советы','Практика','Семья','Сравнения'],
+    'pogoda': ['Погода','Погода и сезоны']
+  };
+  document.addEventListener('click', function(e){
+    if(!e.target.classList.contains('lsb-filter')) return;
+    var cat = e.target.getAttribute('data-cat');
+    document.querySelectorAll('.lsb-filter').forEach(function(b){b.classList.remove('active')});
+    e.target.classList.add('active');
+    document.querySelectorAll('.lsc').forEach(function(card){
+      if(cat === 'all'){card.style.display='';return;}
+      var tag = card.querySelector('.lsc-t');
+      if(!tag){card.style.display='none';return;}
+      var tagText = tag.textContent.trim();
+      var show = cats[cat] && cats[cat].indexOf(tagText) !== -1;
+      card.style.display = show ? '' : 'none';
+    });
+  });
+})();
+</script>

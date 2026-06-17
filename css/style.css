@@ -1174,3 +1174,17 @@ table {
     position: static;
   }
 }
+
+/* Site logo in article header */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.site-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
