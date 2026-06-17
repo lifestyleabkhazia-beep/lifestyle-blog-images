@@ -1175,6 +1175,15 @@ table {
   }
 }
 
+/* Inline article illustrations (not hero) */
+.article-img-inline {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  margin-block: var(--space-6);
+  height: auto;
+  object-fit: cover;
+}
+
 /* Site logo in article header */
 .logo-link {
   display: inline-flex;
