@@ -1197,3 +1197,65 @@ table {
   width: auto;
   display: block;
 }
+
+
+/* ── Мобильная оптимизация (touch targets ≥44px, Яндекс Вебмастер) ── */
+@media (max-width: 768px) {
+
+  /* Кнопки — минимум 44×44px для мобильного касания */
+  .btn, .btn--primary, .btn--outline, .btn--white,
+  .btn--small, .nav-book-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding-block: 12px;
+    font-size: 15px;
+  }
+
+  /* Ссылки навигации */
+  .site-nav a, .footer-col a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding-block: 8px;
+  }
+
+  /* Боковая панель — на мобиле внизу, полная ширина */
+  .article-sidebar {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  /* Sidebar кнопки */
+  .sidebar-card .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  /* Breadcrumb — удобнее на мобиле */
+  .article-breadcrumb {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  /* Hero изображение — без обрезки по высоте на мобиле */
+  .article-hero {
+    max-height: 260px;
+  }
+
+  /* Article header — меньше отступы */
+  .article-header {
+    padding-block: 24px 16px;
+  }
+
+  /* CTA banner — компактнее */
+  .cta-banner {
+    padding: 32px 20px;
+  }
+
+  .cta-banner .btn--white {
+    width: 100%;
+    text-align: center;
+  }
+}
