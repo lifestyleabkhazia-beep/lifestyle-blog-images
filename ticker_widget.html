@@ -1,0 +1,155 @@
+<!-- LIFESTYLE Ticker — бегущая строка с заголовками статей -->
+<style>
+.ls-ticker-wrap {
+  width: 100%;
+  background: #F5F2EA;
+  border-top: 1px solid #d8d3c5;
+  border-bottom: 1px solid #d8d3c5;
+  padding: 12px 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ls-ticker-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #2C4A2E;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: #F5F2EA;
+  padding: 0 20px 0 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border-right: 2px solid #2C4A2E;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ls-ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ls-scroll 28s linear infinite;
+  will-change: transform;
+  padding-left: 160px;
+}
+
+.ls-ticker-wrap:hover .ls-ticker-track {
+  animation-play-state: paused;
+}
+
+.ls-ticker-track a {
+  display: inline-block;
+  color: #2C4A2E;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  padding: 0 6px 0 0;
+  transition: color 0.2s;
+}
+
+.ls-ticker-track a:hover {
+  color: #5a8a3c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ls-ticker-sep {
+  display: inline-block;
+  color: #2C4A2E;
+  opacity: 0.4;
+  margin: 0 18px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+@keyframes ls-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+<div class="ls-ticker-wrap">
+  <span class="ls-ticker-label">ЧИТАТЬ В ЖУРНАЛЕ</span>
+  <div class="ls-ticker-track" id="lsTicker">
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa.html" target="_blank">СПА у моря: Живой пар, Синусоида и настоящее восстановление</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ritsa.html" target="_blank">Озеро Рица — объект ЮНЕСКО в сердце Кавказа</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-kangen.html" target="_blank">Kangen-вода: живая вода для здоровья</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-svidetelstvo.html" target="_blank">Свидетельство о рождении до конца 2027 года</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-deti.html" target="_blank">Дети в Абхазии: лето, море и настоящие приключения</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-glemping.html" target="_blank">Глэмпинг у моря: когда природа и комфорт рядом</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-eda.html" target="_blank">Еда в Абхазии: вкус, который запоминается</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-afon.html" target="_blank">Новый Афон: монастырь, пещера и тишина</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rotavirus.html" target="_blank">Ротавирус на море: как защитить семью</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-pogoda.html" target="_blank">Погода в Абхазии: когда лучше ехать</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-dobratsya.html" target="_blank">Как добраться до Абхазии: все маршруты</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-barkhat.html" target="_blank">Бархатный сезон в Абхазии — лучшее время года</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sochi.html" target="_blank">Абхазия или Сочи: честное сравнение</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-turtsiya.html" target="_blank">Абхазия vs Турция: где лучше отдохнуть</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-zhivoy-par.html" target="_blank">Живой пар: запатентованная технология в 100+ салонах</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-sinusoida.html" target="_blank">Синусоидальный ток: СПА-методика для восстановления</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-massazh.html" target="_blank">Массаж у моря: расслабление, которое остаётся с вами</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-detoks.html" target="_blank">Детокс у моря: как отдых очищает изнутри</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-banya.html" target="_blank">Баня на дровах с видом на море — это совсем другое</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ryba.html" target="_blank">Рыба, которая вчера ещё плавала — свежий улов на кухне</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-zozh.html" target="_blank">Отдыхать — не значит лежать: ЗОЖ у моря в Абхазии</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sap.html" target="_blank">Встать на доску и уйти в море — сапы в Алахадзах</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-delfiny.html" target="_blank">Как встречают дельфины у берегов Алахадзов</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-retreats.html" target="_blank">Ретриты и туры в LIFESTYLE: йога, слёты, групповые программы</a><span class="ls-ticker-sep">✦</span>
+    <!-- Дублируем для бесшовного зацикливания -->
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa.html" target="_blank">СПА у моря: Живой пар, Синусоида и настоящее восстановление</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ritsa.html" target="_blank">Озеро Рица — объект ЮНЕСКО в сердце Кавказа</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-kangen.html" target="_blank">Kangen-вода: живая вода для здоровья</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-svidetelstvo.html" target="_blank">Свидетельство о рождении до конца 2027 года</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-deti.html" target="_blank">Дети в Абхазии: лето, море и настоящие приключения</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-glemping.html" target="_blank">Глэмпинг у моря: когда природа и комфорт рядом</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-eda.html" target="_blank">Еда в Абхазии: вкус, который запоминается</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-afon.html" target="_blank">Новый Афон: монастырь, пещера и тишина</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rotavirus.html" target="_blank">Ротавирус на море: как защитить семью</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-pogoda.html" target="_blank">Погода в Абхазии: когда лучше ехать</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-dobratsya.html" target="_blank">Как добраться до Абхазии: все маршруты</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-barkhat.html" target="_blank">Бархатный сезон в Абхазии — лучшее время года</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sochi.html" target="_blank">Абхазия или Сочи: честное сравнение</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-turtsiya.html" target="_blank">Абхазия vs Турция: где лучше отдохнуть</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-zhivoy-par.html" target="_blank">Живой пар: запатентованная технология в 100+ салонах</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-sinusoida.html" target="_blank">Синусоидальный ток: СПА-методика для восстановления</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-massazh.html" target="_blank">Массаж у моря: расслабление, которое остаётся с вами</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-spa-detoks.html" target="_blank">Детокс у моря: как отдых очищает изнутри</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-banya.html" target="_blank">Баня на дровах с видом на море — это совсем другое</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-ryba.html" target="_blank">Рыба, которая вчера ещё плавала — свежий улов на кухне</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-zozh.html" target="_blank">Отдыхать — не значит лежать: ЗОЖ у моря в Абхазии</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sap.html" target="_blank">Встать на доску и уйти в море — сапы в Алахадзах</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-delfiny.html" target="_blank">Как встречают дельфины у берегов Алахадзов</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-retreats.html" target="_blank">Ретриты и туры в LIFESTYLE: йога, слёты, групповые программы</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-goluboye-ozero.html" target="_blank">Голубое озеро в Абхазии: как добраться и не пожалеть</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-chto-vzyat.html" target="_blank">Что взять в Абхазию: чек-лист без лишнего</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-pitsunda-vs-gagra.html" target="_blank">Пицунда или Гагра: честное сравнение</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-gagra-krepost.html" target="_blank">Гагрская крепость Абаата: история и как добраться</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-sezon-2027.html" target="_blank">Когда открывается сезон в Абхазии 2027</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-marshrut-3-dnya.html" target="_blank">Маршрут на 3 дня: Гагра, Рица, Новый Афон</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-med-i-rynki.html" target="_blank">Абхазский мёд и рынки: где покупать</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-malaya-ritsa.html" target="_blank">Малая Рица: озеро без туристов</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-s-sobakoj.html" target="_blank">Абхазия с собакой: можно ли и как</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-marshrut-7-dnej.html" target="_blank">Маршрут на 7 дней по Абхазии</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rannee-bronirovanie.html" target="_blank">Раннее бронирование: когда бронировать и сколько сэкономить</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-rybalka-abkhaziya.html" target="_blank">Рыбалка в Абхазии: где и что ловят</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-tkuarchal.html" target="_blank">Ткуарчал — нетуристическая Абхазия</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-vina-abkhazii.html" target="_blank">Абхазские вина: какие попробовать</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-tim-bem.html" target="_blank">ТИМ и БЭМ в LIFESTYLE: как работают</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-velosiped-i-marshruti.html" target="_blank">Горный велосипед и пешие маршруты</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-yoga-u-morya.html" target="_blank">Йога у моря в LIFESTYLE: утренние практики</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-detoks-u-morya.html" target="_blank">Детокс у моря: программа без голодания</a><span class="ls-ticker-sep">✦</span>
+    <a href="https://lifestyleabkhazia-beep.github.io/lifestyle-blog-images/articles/article-massazhi-lifestyle.html" target="_blank">Массажи в LIFESTYLE: виды и цены</a><span class="ls-ticker-sep">✦</span>
+  </div>
+</div>
